@@ -16,4 +16,4 @@ Open two terminals side by side and run the `argus.c` and `argusd.c` executables
 * [Rui Armada](https://github.com/RuiArmada)
 
 ## Grade
- ####⭐ (18.0/20)
+⭐ (18.0/20)
