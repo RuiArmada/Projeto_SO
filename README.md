@@ -1,4 +1,4 @@
-# 🖥️🖥️ Operating Systems 🖥️🖥️
+# 🖥️🖥️ Operative Systems 🖥️🖥️
 
 ## Process Control and Management
 Open two terminals side by side and run the `argus.c` and `argusd.c` at the same time.
