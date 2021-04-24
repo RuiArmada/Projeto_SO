@@ -10,7 +10,6 @@
 #include <stdbool.h>
 #include <server/tasks.h>
 
-#include "../../argus.h"
 #include "common/protocol.h"
 #include "common/common.h"
 
