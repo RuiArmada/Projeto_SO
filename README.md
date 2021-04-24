@@ -1,5 +1,10 @@
-# Projeto-SO
+# 🖥️🖥️ Operating Systems 🖥️🖥️
 
-TITLE: Comunicação e Gestão do Processo
+## Process Control and Management
+Open two terminals side by side and run the `argus.c` and `argusd.c` at the same time.
 
-AUTHORS: Carlos Gomes, Márcia Teixeira, Rui Armada
+## Authors
+[Carlos Gomes](https://github.com/CGDEX)
+[Márcia Teixeira](https://github.com/teixeiramarcia)
+[Rui Armada](https://github.com/RuiArmada)
+
