@@ -1,9 +1,13 @@
 # 🖥️🖥️ Operative Systems 🖥️🖥️
 
 ## Process Control and Management
+
 Clone the repositoty.
+
 `cd [repo-dir]` to the repository location.
+
 Run the command `make`.
+
 Open two terminals side by side and run the `argus.c` and `argusd.c` executables at the same time.
 
 ## Authors
