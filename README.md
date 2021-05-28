@@ -8,7 +8,7 @@
 * Open two terminals side by side and run the `argus.c` and `argusd.c` executables at the same time.
 
 ## Manual
-[User Manual](/manual/manual.md)
+* [User Manual](/manual/manual.md)
 
 ## Authors
 * [Carlos Gomes](https://github.com/CGDEX)
