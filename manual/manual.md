@@ -1,10 +1,10 @@
 # How to Use
 
-## Help
-* Type `help`, on the server side of the application (./argus), to be shown the help menu.
-
 ## Task Execution
 * Use any bash comand on the server side of the application (./argus).
+
+## Help
+* Type `help`, on the server side of the application (./argus), to be shown the help menu.
 
 ## Show Output of Task
 * Type `output [number of task]`, on the server side of the application (./argus), to be show the output of said task.
