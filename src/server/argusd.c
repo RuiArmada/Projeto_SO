@@ -92,8 +92,8 @@ int createTaskFile(long long tID, int fdOut, char* buf) {
     int fdO = open(name, O_CREAT | O_WRONLY | O_TRUNC, READWRITE);
     free(name);
 
-    char *tid = malloc(sizeof(char) * (strlen("nova tarefa #\n") + numCharstID + 1));
-    sprintf(tid, "nova tarefa #%lld\n", tID);
+    char *tid = malloc(sizeof(char) * (strlen("new task #\n") + numCharstID + 1));
+    sprintf(tid, "new task #%lld\n", tID);
 
 
     write(fdOut, tid, strlen(tid) + 1);
@@ -125,15 +125,15 @@ pid_t middleMan(int outP1, int inP2, long time, long long tid) {
         char buf[BUFSIZE];
 
         while(1) {
-            if (time > 0) { //se o tempo de inatividade for definido
+            if (time > 0) { 
                 struct timeval timeout;
                 timeout.tv_sec = time;
                 timeout.tv_usec = 0;
-                fd_set set; //set de fd's
-                FD_SET(outP1, &set); //adiciona o outP1 ao set
-                int res = select(outP1+1, &set, NULL, NULL, &timeout); //recebe (neste caso) 1 file descriptor e espera
-                                                                       // que esteja pronto para ser lido
-                if (res == 0) {                                        // res = 0 -> ultrapassou o timeout
+                fd_set set; 
+                FD_SET(outP1, &set); 
+                int res = select(outP1+1, &set, NULL, NULL, &timeout); 
+                                                                       
+                if (res == 0) {                                      
                     fprintf(stderr, "\n-> Task %lld timed out (inactivity time exceeded)\n", tid);
                     setStatus(tid, "Max inactivity");
                     kill(0, SIGTERM);
@@ -169,7 +169,7 @@ pid_t executeCommands(char *buf, int fdOut, long time_inactive, long time_exec, 
     if(exec_pid != 0) {
        return exec_pid;
     }
-    setsid(); //cria um novo grupo de processos e coloca este processo como lider do grupo
+    setsid(); 
 
     int numPipes = countPipes(buf) * 2;
     int pipes[numPipes + 1][2];
@@ -316,32 +316,32 @@ void handleClient(char *clientPipes) {
             break;
         } else if (startsWith(buf, "output ", lido)) {
             sendOutput(buf + 7, fdOut);
-        } else if (strcmp(buf, "historico") == 0) {
+        } else if (strcmp(buf, "history") == 0) {
             printHistory(fdOut);
-        } else if (startsWith(buf, "tempo-inatividade ", lido)) {
+        } else if (startsWith(buf, "inactive-time ", lido)) {
             long seconds = -1;
-            sscanf(buf, "tempo-inatividade %ld\n", &seconds);
+            sscanf(buf, "inactive-time %ld\n", &seconds);
             if (seconds <= 0) {
                 WRITE_LITERAL(fdOut, "Not a valid number, try again.\n");
             } else {
                 WRITE_LITERAL(fdOut, "Got it, thanks!\n");
                 time_inactive = seconds;
             }
-        } else if (startsWith(buf, "tempo-execucao ", lido)) {
+        } else if (startsWith(buf, "exec-time ", lido)) {
             long seconds = -1;
-            sscanf(buf, "tempo-execucao %ld\n", &seconds);
+            sscanf(buf, "exec-time %ld\n", &seconds);
             if (seconds <= 0) {
                 WRITE_LITERAL(fdOut, "Not a valid number, try again.\n");
             } else {
                 WRITE_LITERAL(fdOut, "Got it, thanks!\n");
                 time_exec = seconds;
             }
-        } else if (strcmp(buf, "listar") == 0) {
+        } else if (strcmp(buf, "list") == 0) {
                 tasks_list(&tasks, fdOut);
                 END_OF_MESSAGE(fdOut);
-        } else if (startsWith(buf, "terminar", lido)) {
+        } else if (startsWith(buf, "terminate", lido)) {
             long long tid = -1;
-            sscanf(buf, "terminar %lld\n", &tid);
+            sscanf(buf, "terminate %lld\n", &tid);
             if (tid == 0) {
                 WRITE_LITERAL(fdOut, "Not a valid number, try again.\n");
             } else {
@@ -351,9 +351,9 @@ void handleClient(char *clientPipes) {
                     WRITE_LITERAL(fdOut, "Task terminated successfully\n");
                 }
             }
-        } else if (startsWith(buf, "executar ", lido)) {
-            char *t = strdup(buf + strlen("executar "));
-            pid_t  pid = executeCommands(buf + strlen("executar "), fdOut, time_inactive, time_exec, nextTID);
+        } else if (startsWith(buf, "execute ", lido)) {
+            char *t = strdup(buf + strlen("execute "));
+            pid_t  pid = executeCommands(buf + strlen("execute "), fdOut, time_inactive, time_exec, nextTID);
             Task task = (Task) {.pid = pid, .taskID = nextTID, .task = t};
             nextTID++;
             tasks_add(&tasks, task);

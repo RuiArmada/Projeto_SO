@@ -66,7 +66,7 @@ void sendCommands() {
             sendToServer("exit\n");
             WRITE_LITERAL(1, "Bye!\n");
             break;
-        } else if(strncmp(input, "ajuda\n", s) == 0) {
+        } else if(strncmp(input, "help\n", s) == 0) {
             helper();
         } else if (s > 1) {
             int i = sendToServer(input);
@@ -126,31 +126,31 @@ void sig_handler(int signo) {
 void sendCommandLineArguments(int argc, char **argv) {
     char* command;
     if (strcmp(argv[1], "-i") == 0 && argc > 2) {
-        command = malloc(strlen("tempo-inatividade") + strlen(argv[2]) + 3);
-        sprintf(command, "tempo-inatividade %s\n", argv[2]);
+        command = malloc(strlen("inactive-time") + strlen(argv[2]) + 3);
+        sprintf(command, "inactive-time %s\n", argv[2]);
     } else if (strcmp(argv[1], "-m") == 0 && argc > 2) {
-        command = malloc(strlen("tempo-execucao") + strlen(argv[2]) + 3);
-        sprintf(command, "tempo-execucao %s\n", argv[2]);
+        command = malloc(strlen("exec-time") + strlen(argv[2]) + 3);
+        sprintf(command, "exec-time %s\n", argv[2]);
     } else if (strcmp(argv[1], "-e") == 0 && argc > 2) {
-        command = malloc(strlen("executar") + strlen(argv[2]) + 3);
-        sprintf(command, "executar %s\n", argv[2]);
+        command = malloc(strlen("execute") + strlen(argv[2]) + 3);
+        sprintf(command, "execute %s\n", argv[2]);
     } else if (strcmp(argv[1], "-l") == 0) {
-        command = malloc(strlen("listar") + 2);
-        strcpy(command, "listar\n");
+        command = malloc(strlen("list") + 2);
+        strcpy(command, "list\n");
     } else if (strcmp(argv[1], "-t") == 0 && argc > 2) {
-        command = malloc(strlen("terminar") + strlen(argv[2]) + 3);
-        sprintf(command, "terminar %s\n", argv[2]);
+        command = malloc(strlen("terminate") + strlen(argv[2]) + 3);
+        sprintf(command, "terminate %s\n", argv[2]);
     } else if (strcmp(argv[1], "-r") == 0) {
-        command = malloc(strlen("historico") + 2);
-        strcpy(command, "historico\n");
+        command = malloc(strlen("history") + 2);
+        strcpy(command, "history\n");
     } else if (strcmp(argv[1], "-h") == 0) {
-        command = malloc(strlen("ajuda") + 2);
-        strcpy(command, "ajuda\n");
+        command = malloc(strlen("help") + 2);
+        strcpy(command, "help\n");
     } else if (strcmp(argv[1], "-o") == 0 && argc > 2) {
         command = malloc(strlen("output") + strlen(argv[2]) + 3);
         sprintf(command, "output %s\n", argv[2]);
     } else {
-        WRITE_LITERAL(1, "Comando inválido");
+        WRITE_LITERAL(1, "Invalid Command");
         sendToServer("exit\n");
         return;
     }
