@@ -8,4 +8,4 @@
 #define WRITE_LITERAL(fd, str) write(fd, str, sizeof(str))
 #define END_OF_MESSAGE(fd) write(fd, "", sizeof(""))
 
-#endif //SO_PROJETO_PROTOCOL_H
+#endif //SO_PROJETO_PROTOCOL_H  

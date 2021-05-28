@@ -1,6 +1,6 @@
 #Compiler
 SRC = src
-INCLUDE = include
+INCLUDE = include 
 CC=gcc
 SERVER = argusd
 CLIENT = argus

@@ -7,6 +7,9 @@
 * Run the command `make`.
 * Open two terminals side by side and run the `argus.c` and `argusd.c` executables at the same time.
 
+## Manual
+[User Manual](/manual/)
+
 ## Authors
 * [Carlos Gomes](https://github.com/CGDEX)
 * [Márcia Teixeira](https://github.com/teixeiramarcia)

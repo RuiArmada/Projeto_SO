@@ -7,7 +7,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <signal.h>
-#include <stdbool.h>
+#include <stdbool.h> 
 
 Tasks tasks_create() {
    return (Tasks) {.tasks = NULL, .size = 0, .capacity = 0};
