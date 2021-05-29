@@ -16,10 +16,10 @@
 * Type `inactive-time [number of seconds]`, on the server side of the application (./argus), to define afk time (in seconds).
 
 ## History
-* Type `history`, on the server side of the application (./argus), to be shown the historic of executed times.
+* Type `history`, on the server side of the application (./argus), to be shown the historic of executed tasks.
 
 ## List
-* Type `list`, on the server side of the application (./argus), to print the tasks.
+* Type `list`, on the server side of the application (./argus), to prints tasks in execution.
 
 ## Terminate Task
 * Type `terminate [number of task]`, on the server side of the application (./argus), to terminate said task.
